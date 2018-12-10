@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function(){
+	return view('money.home');
+})->name('home');
+
+Route::resource('Money', 'MoneyController', ['names' => 'money']);
