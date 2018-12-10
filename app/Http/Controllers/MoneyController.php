@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Money;
 
 class MoneyController extends Controller
 {
@@ -13,7 +14,8 @@ class MoneyController extends Controller
      */
     public function index()
     {
-        return view('money.index');
+        $money = Money::all();
+        return view('money.index', compact('money'));
     }
 
     /**
@@ -23,7 +25,7 @@ class MoneyController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
