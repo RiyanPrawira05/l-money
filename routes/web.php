@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function(){
-	return view('money.home');
+	return view('laraMoney.home');
 })->name('home');
 
-Route::resource('Money', 'MoneyController', ['names' => 'money']);
+Route::resource('lara-money', 'MoneyController', ['names' => 'money']);

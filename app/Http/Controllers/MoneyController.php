@@ -15,7 +15,7 @@ class MoneyController extends Controller
     public function index()
     {
         $money = Money::all();
-        return view('money.index', compact('money'));
+        return view('laraMoney.index', compact('money'));
     }
 
     /**
@@ -25,7 +25,7 @@ class MoneyController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('laraMoney.create');
     }
 
     /**
