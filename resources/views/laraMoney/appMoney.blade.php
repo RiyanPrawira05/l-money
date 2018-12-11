@@ -17,6 +17,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('creative-agency/css/one-page-wonder.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ asset('creative-agency/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css')}}">
 </head>
 
     <body>
@@ -66,6 +68,9 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('creative-agency/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('creative-agency/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('creative-agency/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{ asset('creative-agency/vendor/datetimepicker/js/bootstrap-datetimepicker.fr.js')}}"></script>
+    @yield('script')
 
   </body>
 </html>

@@ -12,7 +12,7 @@
 
     <div class="col-lg-12">
         <div class="container">
-            <a href="{{ Route('money.create') }}" class="btn btn-danger btn-md rounded-pill mt-0 mb-3">Add</a>
+            <a href="{{ Route('money.create') }}" class="btn btn-danger btn-md rounded-pill mt-0 mb-3"><i class="fas fa-plus-circle"></i> Tambah</a>
             <table class="table table-hover">
                 <thead>
                     <tr>
