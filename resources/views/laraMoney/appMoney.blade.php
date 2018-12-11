@@ -70,6 +70,7 @@
     <script src="{{ asset('creative-agency/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('creative-agency/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
     <script src="{{ asset('creative-agency/vendor/datetimepicker/js/bootstrap-datetimepicker.fr.js')}}"></script>
+    <script src="{{ asset('creative-agency/vendor/plentz-jquery-maskmoney/src/jquery.maskMoney.js')}}"></script>
     @yield('script')
 
   </body>

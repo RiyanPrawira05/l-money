@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Money;
+use Carbon\Carbon;
 
 class MoneyController extends Controller
 {
@@ -37,7 +38,7 @@ class MoneyController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'jumlah' => 'required|numeric',
+            'jumlah' => 'required',
             'operator' => 'required|string',
             'keterangan' => 'required|min:3|max:150',
             'waktu' => 'required',

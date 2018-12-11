@@ -12,9 +12,9 @@
             <div class="container">
                 <form action="{{ Route('money.store') }}" method="POST">{{ csrf_field() }}
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Finance</label>
+                        <label for="operator" class="col-sm-2 col-form-label">Finance</label>
                         <div class="col-sm-8">
-                            <select class="custom-select my-1 mr-sm-2" name="operator" required autofocus>
+                            <select class="custom-select my-1 mr-sm-2" name="operator" id="operator" required autofocus>
                                 <option value="" selected disabled>Pilih Finance</option>
                                 <option value="pemasukkan">Pemasukkan</option>
                                 <option value="pengeluaran">Pengeluaran</option>
@@ -22,31 +22,31 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="">Tanggal</label>
+                        <label class="col-sm-2 col-form-label" for="waktu">Date time</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><span class="fas fa-calendar-alt"></span></div>
-                                </div>
                                 <input type="text" id="waktu" class="form-control" name="waktu" placeholder="select date" data-date-format="yyyy MM dd - HH:ii p" autocomplete="off" required>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="waktu"><span class="fas fa-calendar-alt"></span></label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="">Jumlah Uang</label>
+                        <label class="col-sm-2 col-form-label" for="jumlah">Jumlah uang</label>
                         <div class="col-sm-8">
                             <div class="input-group">
+                                <input type="text" class="form-control" name="jumlah" placeholder="Rp. 200XXX" id="jumlah" data-thousands="." data-decimal="," data-prefix="Rp">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><span class="fas fa-money-bill-alt"></span></div>
+                                    <label class="input-group-text" for="jumlah"><span class="fas fa-money-bill-alt"></span></label>
                                 </div>
-                                <input type="number" class="form-control" name="jumlah" placeholder="200XXX">
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Keterangan</label>
+                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" name="keterangan" placeholder="minimal 4 karakter" required></textarea>
+                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="minimal 4 karakter" required></textarea>
                         </div>
                     </div>
                         <button type="submit" class="btn btn-success">Simpan</button>
@@ -65,6 +65,17 @@
             forceParse: 0,
             showMeridian: 1
         });
+    </script>
+    <script type="text/javascript">
+        $("#jumlah").maskMoney({ 
+            formatOnBlur: true, 
+            reverse: true, 
+            prefix: 'Rp', 
+            selectAllOnFocus: false, 
+            precision: 0,
+            allowNegative: true 
+        });
+
     </script>
 @endsection
 @endsection
