@@ -36,7 +36,20 @@ class MoneyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'jumlah' => 'required|numeric',
+            'operator' => 'required|string',
+            'keterangan' => 'required|min:3|max:150',
+            'waktu' => 'required',
+        ]);
+        $detail = $request->operator == 'pemasukkan' ? '+' : '-';
+        $money = Money::create([
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan, 
+            'operator' => $detail,
+            'waktu' => $request->waktu,
+        ]);
+        return redirect()->route('money.index');
     }
 
     /**

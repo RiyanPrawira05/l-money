@@ -10,7 +10,7 @@
         <a href="{{ Route('money.index') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-3">Back</a>
         <div class="col-lg-12">
             <div class="container">
-                <form>
+                <form action="{{ Route('money.store') }}" method="POST">{{ csrf_field() }}
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Finance</label>
                         <div class="col-sm-8">
