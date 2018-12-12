@@ -51,7 +51,7 @@ class MoneyController extends Controller
             'operator' => $detail,
             'waktu' => $time,
         ]);
-        return redirect()->route('money.index')->with('success', 'Data catatan finance berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data catatan finance berhasil ditambahkan');
     }
 
     /**
@@ -100,7 +100,7 @@ class MoneyController extends Controller
             'operator' => $detail,
             'waktu' => $time,
         ]);
-        return redirect()->route('money.index')->with('success', 'Data catatan finance berhasil di edit');
+        return redirect()->back()->with('success', 'Data catatan finance berhasil di edit');
     }
 
     /**
@@ -109,7 +109,7 @@ class MoneyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
         //
     }
