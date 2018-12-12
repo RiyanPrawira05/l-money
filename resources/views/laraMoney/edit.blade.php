@@ -1,10 +1,5 @@
 @extends ('laraMoney.appMoney')
-
-@section ('home') Home @endsection
-@section ('index') Finance @endsection
-
 @section ('content')
-
 <div class="card">
     <div class="card-body">
         <a href="{{ Route('money.index') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-5"><i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="csrf_token" content="{{ csrf_token() }}">
-    <meta name="author" content="AppMoney">
-
+    <meta name="csrf_token" content="{!! csrf_token() !!}">
+    <meta name="App" content="AppMoney">
     <title>App-Money</title>
 
     <!-- Bootstrap core CSS -->
@@ -18,50 +17,41 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('creative-agency/css/one-page-wonder.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ asset('creative-agency/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
 </head>
-
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark navbar-custom bg-black">
             <div class="container">
-                <a class="navbar-brand" href="#">Lara Money</a>
+               <a class="navbar-brand" href="#">Lara Money</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('home') }}">@yield('home')</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('money.index') }}">@yield('index')</a>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <div class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ Route('home') }}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item nav-link" href="{{ Route('money.index') }}">Finance</a>
+                            </li>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <header class="masthead text-center text-white">
-            <div class="masthead-content">
-                <div class="container">
-                    @yield('heading')
-                    @yield('subheading')
-                    @yield('btn')
-                </div>
-            </div>
-                <div class="bg-circle-1 bg-circle"></div>
-                <div class="bg-circle-2 bg-circle"></div>
-                <div class="bg-circle-3 bg-circle"></div>
-                <div class="bg-circle-4 bg-circle"></div>
-        </header>
+    <!-- Header -->
+    @yield('header')
 
+    <section>
+        <!-- Content -->
         @yield('content')
+    </section>
 
-    <!-- Footer -->
     <footer class="py-5 bg-black">
         <div class="container">
-            <p class="m-0 text-center text-white small">Copyright &copy; 2018 by Riyan's</p>
+            <p class="m-0 mb-3 text-center text-secondary medium">You can contact and follow me on Instagram : <a href="https://www.instagram.com/accounts/login/?hl=id" class="text-danger">@riyanprawiraa</a></p>
+            <p class="m-0 text-center text-secondary small">Copyright &copy; 2018 by Riyan's</p>
         </div>
     </footer>
 
@@ -72,6 +62,5 @@
     <script src="{{ asset('creative-agency/vendor/datetimepicker/js/bootstrap-datetimepicker.fr.js')}}"></script>
     <script src="{{ asset('creative-agency/vendor/plentz-jquery-maskmoney/src/jquery.maskMoney.js')}}"></script>
     @yield('script')
-
-  </body>
+    </body>
 </html>

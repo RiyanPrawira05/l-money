@@ -51,7 +51,7 @@ class MoneyController extends Controller
             'operator' => $detail,
             'waktu' => $time,
         ]);
-        return redirect()->route('money.index');
+        return redirect()->route('money.index')->with('success', 'Data catatan finance berhasil ditambahkan');
     }
 
     /**
@@ -100,7 +100,7 @@ class MoneyController extends Controller
             'operator' => $detail,
             'waktu' => $time,
         ]);
-        return redirect()->route('money.index');
+        return redirect()->route('money.index')->with('success', 'Data catatan finance berhasil di edit');
     }
 
     /**
@@ -115,8 +115,13 @@ class MoneyController extends Controller
     }
     public function delete(Request $request)
     {
-        $ceklis = $request->ceklis;
-        $money = Money::whereIn('id', $ceklis)->delete();
-        return redirect()->back();
+        if ($request->ceklis) 
+        {
+            $ceklis = $request->ceklis;
+            $money = Money::whereIn('id', $ceklis)->delete();
+        } else {
+            return redirect()->back()->with('error', 'Tidak ada data yang ingin dihapus, silahkan cek kembali');
+        }
+        return redirect()->back()->with('success', 'Data catatan finance sudah dihapus');
     }
 }
