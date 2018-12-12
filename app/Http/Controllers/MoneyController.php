@@ -44,11 +44,12 @@ class MoneyController extends Controller
             'waktu' => 'required',
         ]);
         $detail = $request->operator == 'pemasukkan' ? '+' : '-';
+        $time = $request->waktu ? Carbon::parse($request->waktu)->format('y-m-d h:i:s') : '';
         $money = Money::create([
             'jumlah' => $request->jumlah,
             'keterangan' => $request->keterangan, 
             'operator' => $detail,
-            'waktu' => $request->waktu,
+            'waktu' => $time,
         ]);
         return redirect()->route('money.index');
     }

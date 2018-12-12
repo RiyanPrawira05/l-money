@@ -25,7 +25,7 @@
                         <label class="col-sm-2 col-form-label" for="waktu">Date time</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="waktu" class="form-control" name="waktu" placeholder="select date" data-date-format="yyyy MM dd - HH:ii p" autocomplete="off" required>
+                                <input type="text" id="waktu" class="form-control" name="waktu" placeholder="select date" data-date-format="yyyy-mm-dd, HH:ii p" autocomplete="off" required>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="waktu"><span class="fas fa-calendar-alt"></span></label>
                                 </div>
@@ -36,7 +36,7 @@
                         <label class="col-sm-2 col-form-label" for="jumlah">Jumlah uang</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="jumlah" placeholder="Rp. 200XXX" id="jumlah" data-thousands="." data-decimal="," data-prefix="Rp">
+                                <input type="text" class="form-control" name="jumlah" placeholder="Rp. 200XXX" id="jumlah">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="jumlah"><span class="fas fa-money-bill-alt"></span></label>
                                 </div>
@@ -68,12 +68,10 @@
     </script>
     <script type="text/javascript">
         $("#jumlah").maskMoney({ 
-            formatOnBlur: true, 
-            reverse: true, 
-            prefix: 'Rp', 
-            selectAllOnFocus: false, 
-            precision: 0,
-            allowNegative: true 
+            thousands:'.', 
+            decimal:',', 
+            allowZero:true, 
+            prefix: 'Rp'
         });
 
     </script>
