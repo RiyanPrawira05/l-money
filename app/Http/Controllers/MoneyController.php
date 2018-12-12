@@ -73,7 +73,8 @@ class MoneyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $money = Money::find($id);
+        return view('laraMoney.edit', compact('money'));
     }
 
     /**
@@ -85,7 +86,21 @@ class MoneyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'jumlah' => 'required',
+            'operator' => 'required|string',
+            'keterangan' => 'required|min:3|max:150',
+            'waktu' => 'required',
+        ]);
+        $detail = $request->operator == 'pemasukkan' ? '+' : '-';
+        $time = $request->waktu ? Carbon::parse($request->waktu)->format('y-m-d h:i:s') : '';
+        $money = Money::find($id)->Update([
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan, 
+            'operator' => $detail,
+            'waktu' => $time,
+        ]);
+        return redirect()->route('money.index');
     }
 
     /**
@@ -94,8 +109,14 @@ class MoneyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+    }
+    public function delete(Request $request)
+    {
+        $ceklis = $request->ceklis;
+        $money = Money::whereIn('id', $ceklis)->delete();
+        return redirect()->back();
     }
 }

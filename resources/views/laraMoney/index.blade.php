@@ -28,9 +28,12 @@
                 <tbody>
                     @if (count($money) > 0)
                     @foreach ($money as $moneys)
+
+                    <form action="{{ Route('delete') }}" method="POST">
+                    {{ csrf_field() }}
                         <tr>
                             <td>
-                                <input type="checkbox" name="ceklis">    
+                                <input type="checkbox" name="ceklis[]" id="ceklis" value="{{ $moneys->id }}">    
                             </td>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('d M Y, h:i') }}</td>
@@ -42,11 +45,7 @@
                             @endif
                             <td>{{ $moneys->keterangan }}</td>
                             <td>
-                                <form action="" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('PUT') }}
-                                    <button type="submit" class="btn btn-dark btn-md rounded-pill mt-0 mb-3"><span class="fas fa-edit"></span> Edit</button>
-                                </form>
+                                <a href="{{ Route('money.edit', $moneys->id) }}" class="btn btn-dark btn-md rounded-pill mt-0 mb-3"><i class="fas fa-edit"></i> Edit</a>
                             </td>
                         </tr>
                     @endforeach
@@ -60,7 +59,8 @@
                     @endif
                 </tbody>
             </table>
-                <a href="" class="btn btn-primary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-trash"></i> Delete</a>
+                <button type="submit" class="btn btn-primary btn-md rounded-pill mt-0 mb-3"><span class="fas fa-trash"></span> Delete</button>
+            </form>
         </div>
             {{ $money->links('pagination.custom') }}
     </div>
