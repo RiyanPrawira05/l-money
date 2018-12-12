@@ -125,4 +125,5 @@ class MoneyController extends Controller
         }
         return redirect()->back()->with('success', 'Data catatan finance sudah dihapus');
     }
+
 }

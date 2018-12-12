@@ -17,4 +17,3 @@ Route::get('/', function(){
 
 Route::resource('lara-money', 'MoneyController', ['names' => 'money']);
 Route::post('/delete', 'MoneyController@delete')->name('delete');
-Route::get('/laporan', 'MoneyController@laporan')->name('laporan');

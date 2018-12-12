@@ -57,7 +57,7 @@
                                     <td></td>
                                     <td colspan="2"><strong>Jumlah</strong></td>
                                     <td></td>
-                                    <td>..</td>
+                                    <td>{{ $moneys->jumlah }}</td>
                                     <td></td>
                                 </th>
                             </tr>
