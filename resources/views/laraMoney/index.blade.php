@@ -30,10 +30,10 @@
                     @foreach ($money as $moneys)
                         <tr>
                             <td>
-                                <input type="checkbox" name="list">
+                                <input type="checkbox" name="ceklis">    
                             </td>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('y M d, H:i') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('d M Y, h:i') }}</td>
                             <td>{{ $moneys->operator == '+' ? 'Pemasukkan' : 'Pengeluaran' }}</td>
                             @if ($moneys->operator == '+')
                                 <td><p class="text-success">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
@@ -62,6 +62,7 @@
             </table>
                 <a href="" class="btn btn-primary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-trash"></i> Delete</a>
         </div>
+            {{ $money->links('pagination.custom') }}
     </div>
 </div>
 @endsection

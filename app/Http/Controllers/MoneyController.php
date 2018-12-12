@@ -15,7 +15,7 @@ class MoneyController extends Controller
      */
     public function index()
     {
-        $money = Money::all();
+        $money = Money::orderBy('waktu', 'DESC')->paginate(5);
         return view('laraMoney.index', compact('money'));
     }
 
