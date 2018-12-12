@@ -45,7 +45,7 @@
                     <div class="form-group row">
                         <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="minimal 4 karakter" required>{{ $money->keterangan }}</textarea>
+                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="minimal 4 karakter">{{ $money->keterangan }}</textarea>
                         </div>
                     </div>
                         <button type="submit" class="btn btn-danger btn-md rounded-pill mt-1 mb-3">Simpan</button>

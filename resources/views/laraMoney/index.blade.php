@@ -35,7 +35,13 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('d M Y, h:i') }}</td>
                             <td>{{ $moneys->operator == '+' ? 'Pemasukkan' : 'Pengeluaran' }}</td>
-                            <td>{{ $moneys->keterangan }}</td>
+
+                            @if ($moneys->keterangan)
+                                <td>{{ $moneys->keterangan }}</td>
+                            @else
+                                <td><span class="m-0 text-muted">Tidak ada keterangan</span></td>
+                            @endif
+
                             @if ($moneys->operator == '+')
                                 <td><p class="text-success">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
                             @else

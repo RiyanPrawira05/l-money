@@ -32,7 +32,7 @@
                         <label class="col-sm-2 col-form-label" for="waktu">Date time</label>
                         <div class="col-sm-8">
                             <div class="input-group-append date">
-                            <input type="text" id="waktu" class="form-control custom" name="waktu" placeholder="Select Date Time" data-date-format="dd M yyyy, HH:ii p" autocomplete="off" readonly required>&nbsp;
+                            <input type="text" id="waktu" class="form-control custom" name="waktu" placeholder="Select Date Time" data-date-format="dd M yyyy, HH:ii p" autocomplete="off" readonly required>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-secondary"><span class="add-on"><i class="fas fa-backspace icon-remove"></i></span></button>
                                     <button type="button" class="btn btn-secondary"><span class="add-on"><i class="fas fa-calendar-alt icon-th"></i></span></button>
@@ -43,7 +43,7 @@
                     <div class="form-group row">
                         <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="minimal 4 karakter" required></textarea>
+                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="minimal 4 karakter"></textarea>
                         </div>
                     </div>
                         <button type="submit" class="btn btn-danger btn-md rounded-pill mt-1 mb-3">Tambahkan</button>

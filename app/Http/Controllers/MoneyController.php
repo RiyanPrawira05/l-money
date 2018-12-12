@@ -40,7 +40,7 @@ class MoneyController extends Controller
         $this->validate($request, [
             'jumlah' => 'required',
             'operator' => 'required|string',
-            'keterangan' => 'required|min:3|max:150',
+            'keterangan' => 'min:3|max:150|nullable',
             'waktu' => 'required',
         ]);
         $detail = $request->operator == 'pemasukkan' ? '+' : '-';
@@ -88,8 +88,8 @@ class MoneyController extends Controller
     {
         $this->validate($request, [
             'jumlah' => 'required',
-            'operator' => 'required|string',
-            'keterangan' => 'required|min:3|max:150',
+            'operator' => 'required',
+            'keterangan' => 'min:3|max:150',
             'waktu' => 'required',
         ]);
         $detail = $request->operator == 'pemasukkan' ? '+' : '-';
