@@ -20,8 +20,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Finance</th>
-                            <th scope="col">Jumlah</th>
                             <th scope="col">Keterangan</th>
+                            <th scope="col">Jumlah</th>
                             <th scope="col"><span class="fas fa-cog"></span></th>
                         </tr>
                     </thead>
@@ -35,17 +35,26 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('d M Y, h:i') }}</td>
                             <td>{{ $moneys->operator == '+' ? 'Pemasukkan' : 'Pengeluaran' }}</td>
+                            <td>{{ $moneys->keterangan }}</td>
                             @if ($moneys->operator == '+')
                                 <td><p class="text-success">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
                             @else
                                 <td><p class="text-danger">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
                             @endif
-                            <td>{{ $moneys->keterangan }}</td>
                             <td>
                                 <a href="{{ Route('money.edit', $moneys->id) }}" class="btn btn-secondary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-edit"></i> Edit</a>
                             </td>
                         </tr>
                         @endforeach
+                            <tr>
+                                <th scope="row">
+                                    <td></td>
+                                    <td colspan="2"><strong>Jumlah</strong></td>
+                                    <td></td>
+                                    <td>..</td>
+                                    <td></td>
+                                </th>
+                            </tr>
                         @else
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>Danger !</strong> Your finance is empty, <a href="{{ Route('money.create') }}" class="alert-link">click here</a> for add and record your finance

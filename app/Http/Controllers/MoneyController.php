@@ -113,6 +113,7 @@ class MoneyController extends Controller
     {
         //
     }
+
     public function delete(Request $request)
     {
         if ($request->ceklis) 
@@ -123,5 +124,15 @@ class MoneyController extends Controller
             return redirect()->back()->with('error', 'Tidak ada data yang ingin dihapus, silahkan cek kembali');
         }
         return redirect()->back()->with('success', 'Data catatan finance sudah dihapus');
+    }
+
+    public function laporan()
+    {
+        $jumlah = Money::whereHas('waktu')->get();
+
+        foreach ($jumlah as $key => $valueJumlah) {
+            $total = $valueJumlah + Request::get('jumlah'); 
+        }
+        return $total;
     }
 }
