@@ -13,10 +13,16 @@ class MoneyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $money = Money::orderBy('waktu', 'DESC')->paginate(5);
-        return view('laraMoney.index', compact('money'));
+        $result = Money::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $money = $result->where('waktu', 'LIKE', '%'.$search.'%')->orWhere('operator', 'LIKE', '%'.$search.'%');
+        }
+        $money = $result->orderBy('waktu', 'DESC')->paginate(5);
+        $data = $result->whereMonth('created_at', '=', '12')->get();
+        return view('laraMoney.index', compact('money', 'data'));
     }
 
     /**
