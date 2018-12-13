@@ -16,7 +16,16 @@ class MoneyController extends Controller
     public function index()
     {
         $money = Money::orderBy('created_at', 'DESC')->paginate(5);
-        return view('laraMoney.index', compact('money'));
+
+        $total = 0;
+        foreach ($money as $key => $value) {
+            if ($value->operator == '+') {
+                $total =  is_numeric($value->jumlah) + $total;
+            } else {
+                $total = is_numeric($value->jumlah) - $total;
+            }
+        }
+        return view('laraMoney.index', compact('money', 'total'));
     }
 
     /**

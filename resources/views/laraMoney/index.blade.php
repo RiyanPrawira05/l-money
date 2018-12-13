@@ -55,9 +55,8 @@
                             <tr>
                                 <th scope="row">
                                     <td></td>
-                                    <td colspan="2"><strong>Jumlah</strong></td>
-                                    <td></td>
-                                    <td>{{ $moneys->jumlah }}</td>
+                                    <td colspan="3"><strong>Jumlah</strong></td>
+                                    <td>{{ $total }}</td>
                                     <td></td>
                                 </th>
                             </tr>
