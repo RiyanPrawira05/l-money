@@ -34,7 +34,7 @@
                                 <a class="nav-link" href="{{ Route('home') }}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-item nav-link" href="{{ Route('money.index') }}">Finance</a>
+                                <a class="nav-item nav-link" href="{{ Route('home.finance') }}">Finance</a>
                             </li>
                         </div>
                     </div>

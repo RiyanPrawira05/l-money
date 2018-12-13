@@ -9,11 +9,11 @@
         <div class="container">
             @include ('alerts.alert')
             <div class="masthead text-left masthead-content">
-                <a href="{{ Route('money.create') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-plus-circle"></i> Tambah</a>
+                <a href="{{ Route('finance.create') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-plus-circle"></i> Tambah</a>
             </div>
         <div class="table-responsive">
             <table class="table table-hover">
-                <form action="{{ Route('delete') }}" method="POST">{{ csrf_field() }}
+                <form action="{{ Route('finance.delete') }}" method="POST">{{ csrf_field() }}
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -48,7 +48,7 @@
                                 <td><p class="text-danger">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
                             @endif
                             <td>
-                                <a href="{{ Route('money.edit', $moneys->id) }}" class="btn btn-secondary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="{{ Route('finance.edit', $moneys->id) }}" class="btn btn-secondary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-edit"></i> Edit</a>
                             </td>
                         </tr>
                         @endforeach
@@ -56,13 +56,13 @@
                                 <th scope="row">
                                     <td></td>
                                     <td colspan="3"><strong>Jumlah</strong></td>
-                                    <td>{{ $total }}</td>
+                                    <td>{{ $moneys->jumlah }}</td>
                                     <td></td>
                                 </th>
                             </tr>
                         @else
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Danger !</strong> Your finance is empty, <a href="{{ Route('money.create') }}" class="alert-link">click here</a> for add and record your finance
+                                <strong>Danger !</strong> Your finance is empty, <a href="{{ Route('finance.create') }}" class="alert-link">click here</a> for add and record your finance
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

@@ -3,10 +3,10 @@
 <div class="card">
     <div class="card-body">
         @include ('alerts.alert')
-        <a href="{{ Route('money.index') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-5"><i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
+        <a href="{{ Route('home.finance') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-5"><i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
         <div class="col-lg-12">
             <div class="container">
-                <form action="{{ Route('money.update', $money->id) }}" method="POST">
+                <form action="{{ Route('finance.update', $money->id) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <div class="form-group row">

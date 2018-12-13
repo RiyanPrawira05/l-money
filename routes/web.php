@@ -15,5 +15,14 @@ Route::get('/', function(){
 	return view('laraMoney.home');
 })->name('home');
 
-Route::resource('lara-money', 'MoneyController', ['names' => 'money']);
-Route::post('/delete', 'MoneyController@delete')->name('delete');
+Route::resource('lara-money', 'MoneyController', [
+	'names' => [
+				'index' => 'home.finance',
+				'create' => 'finance.create',
+				'store' => 'finance.added',
+				'edit' => 'finance.edit',
+				'update' => 'finance.update',
+				] 
+			]);
+
+Route::post('/delete', 'MoneyController@delete')->name('finance.delete');

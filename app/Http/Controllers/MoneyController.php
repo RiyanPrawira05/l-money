@@ -15,17 +15,8 @@ class MoneyController extends Controller
      */
     public function index()
     {
-        $money = Money::orderBy('created_at', 'DESC')->paginate(5);
-
-        $total = 0;
-        foreach ($money as $key => $value) {
-            if ($value->operator == '+') {
-                $total =  is_numeric($value->jumlah) + $total;
-            } else {
-                $total = is_numeric($value->jumlah) - $total;
-            }
-        }
-        return view('laraMoney.index', compact('money', 'total'));
+        $money = Money::orderBy('waktu', 'DESC')->paginate(5);
+        return view('laraMoney.index', compact('money'));
     }
 
     /**
@@ -60,7 +51,7 @@ class MoneyController extends Controller
             'operator' => $detail,
             'waktu' => $time,
         ]);
-        return redirect()->back()->with('success', 'Data catatan finance berhasil ditambahkan');
+        return redirect()->route('home.finance')->with('success', 'Data catatan finance berhasil ditambahkan');
     }
 
     /**
@@ -98,7 +89,7 @@ class MoneyController extends Controller
         $this->validate($request, [
             'jumlah' => 'required',
             'operator' => 'required',
-            'keterangan' => 'min:3|max:150',
+            'keterangan' => 'nullable',
             'waktu' => 'required',
         ]);
         $detail = $request->operator == 'pemasukkan' ? '+' : '-';
@@ -109,7 +100,7 @@ class MoneyController extends Controller
             'operator' => $detail,
             'waktu' => $time,
         ]);
-        return redirect()->back()->with('success', 'Data catatan finance berhasil di edit');
+        return redirect()->route('home.finance')->with('success', 'Data catatan finance berhasil di edit');
     }
 
     /**
@@ -134,5 +125,4 @@ class MoneyController extends Controller
         }
         return redirect()->back()->with('success', 'Data catatan finance sudah dihapus');
     }
-
 }

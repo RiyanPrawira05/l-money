@@ -5,7 +5,7 @@
         <div class="container">
             <h1 class="masthead-heading mb-0">Welcome !!</h1>
             <h2 class="masthead-subheading mb-0">Manage your finance now</h2>
-            <a href="{{ Route('money.index') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Get started</a>
+            <a href="{{ Route('home.finance') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Get started</a>
         </div>
     </div>
         <div class="bg-circle-1 bg-circle"></div>
@@ -25,7 +25,7 @@
                 <h2 class="display-4">Hello.. There,</h2>
                 <p>We can manage our finances so that expenses and revenues can be recorded in a structured and safe manner</p>
                 <p class="mt-3 mb-0 card-text text-danger">See your table finance here</p>
-                <a href="{{ Route('money.index') }}" class="btn btn-secondary btn-md rounded-pill mt-2">Go now !!</a>
+                <a href="{{ Route('home.finance') }}" class="btn btn-secondary btn-md rounded-pill mt-2">Go now !!</a>
             </div>
         </div>
     </div>
