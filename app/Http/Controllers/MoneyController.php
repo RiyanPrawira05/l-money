@@ -17,12 +17,20 @@ class MoneyController extends Controller
     {
         $result = Money::query();
         if ($request->filled('search')) {
-            $search = $request->search;
-            $money = $result->where('waktu', 'LIKE', '%'.$search.'%')->orWhere('operator', 'LIKE', '%'.$search.'%');
+            $search = Carbon::parse($request->search)->format('y-m-d');
+            $money = $result->whereDate('waktu', '=', $search);
         }
         $money = $result->orderBy('waktu', 'DESC')->paginate(5);
         $data = $result->whereMonth('created_at', '=', '12')->get();
-        return view('laraMoney.index', compact('money', 'data'));
+        $total = 0;
+        foreach ($data as $key => $value) {
+            if ($value->operator == '+') {
+                $total += $value->jumlah;
+            } else {
+                $total -= $value->jumlah;
+            }
+        }
+        return view('laraMoney.index', compact('money', 'total'));
     }
 
     /**

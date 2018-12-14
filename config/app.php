@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Akaunting\Money\Provider::class,
         /*
          * Application Service Providers...
          */

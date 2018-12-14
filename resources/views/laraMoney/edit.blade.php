@@ -23,7 +23,7 @@
                         <label class="col-sm-2 col-form-label" for="jumlah">Jumlah uang</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="jumlah" placeholder="Rp. 200XXX" id="jumlah" value="{{ $money->jumlah }}">
+                                <input type="number" class="form-control" name="jumlah" placeholder="Rp. 200XXX" id="jumlah" value="{{ $money->jumlah }}">
                                 <div class="input-group-prepend">
                                     <label for="jumlah"><span class="btn btn-dark"><i class="fas  fa-money-bill-alt"></i></span></button></label>
                                 </div>
@@ -53,6 +53,7 @@
                 </div>
             </div>
         </div>
+@endsection
 @section('script')
      <script type="text/javascript">
         $('.date').datetimepicker({
@@ -67,14 +68,4 @@
             keyboardNavigation: true,
         });
     </script>
-    <script type="text/javascript">
-        $("#jumlah").maskMoney({ 
-            thousands:'.', 
-            decimal:',', 
-            allowZero:true, 
-            prefix: 'Rp'
-        });
-
-    </script>
-@endsection
 @endsection

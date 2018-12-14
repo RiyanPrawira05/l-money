@@ -50,7 +50,7 @@
                                     @if ($moneys->operator == '+')
                                         <td><p class="text-success">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
                                     @else
-                                        <td><p class="text-danger">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
+                                        <td><p class="text-danger">{{ $moneys->operator }} @money($moneys->jumlah, 'IDR')</td>
                                     @endif
                                     <td>
                                         <a href="{{ Route('finance.edit', $moneys->id) }}" class="btn btn-secondary btn-md rounded-pill mt-0 mb-3"><i class="fas fa-edit"></i> Edit</a>
@@ -61,7 +61,8 @@
                                         <th scope="row">
                                             <td></td>
                                             <td colspan="3"><strong>Jumlah</strong></td>
-                                            <td>{{ $data }}</td>
+
+                                            <td>@money($total, 'IDR')</td>
                                             <td></td>
                                         </th>
                                     </tr>
