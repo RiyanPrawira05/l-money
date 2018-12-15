@@ -21,7 +21,7 @@
                         <label class="col-sm-2 col-form-label" for="jumlah">Jumlah uang</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="number" class="form-control" name="jumlah" id="jumlah">
+                                <input type="text" class="form-control" name="jumlah" id="jumlah" data-prefix="Rp " data-thousands="." data-decimal=",">
                                 <div class="input-group-prepend">
                                     <label for="jumlah"><span class="btn btn-dark"><i class="fas fa-fas fa-money-bill-alt"></i></span></button></label>
                                 </div>
@@ -66,6 +66,6 @@
         pickerPosition: 'top-left',
         keyboardNavigation: true,
     });
-    // $('#jumlah').maskMoney('mask');
+    $('#jumlah').maskMoney({ precision: 0 });
 </script>
 @endsection

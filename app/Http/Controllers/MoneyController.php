@@ -51,6 +51,7 @@ class MoneyController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all(), filter_var($request->jumlah, FILTER_SANITIZE_NUMBER_FLOAT));
         $this->validate($request, [
             'jumlah' => 'required',
             'operator' => 'required|string',
