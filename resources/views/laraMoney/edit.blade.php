@@ -1,71 +1,95 @@
 @extends ('laraMoney.appMoney')
 @section ('content')
-<div class="card">
-    <div class="card-body">
-        @include ('alerts.alert')
-        <a href="{{ Route('home.finance') }}" class="btn btn-primary btn-md rounded-pill mt-0 mb-5"><i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
-        <div class="col-lg-12">
-            <div class="container">
-                <form action="{{ Route('finance.update', $money->id) }}" method="POST">
-                    {{ csrf_field() }}
-                    {{ method_field('PUT') }}
-                    <div class="form-group row">
-                        <label for="operator" class="col-sm-2 col-form-label">Finance</label>
-                        <div class="col-sm-8">
-                            <select class="custom-select my-1 mr-sm-2" name="operator" id="operator" required autofocus>
-                                <option value="" selected disabled>Pilih Finance</option>
-                                <option value="pemasukkan" {{ $money->operator == '+' ? 'selected' : '' }}>Pemasukkan</option>
-                                <option value="pengeluaran" {{ $money->operator == '-' ? 'selected' : '' }}>Pengeluaran</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="jumlah">Jumlah uang</label>
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <input type="number" class="form-control" name="jumlah" placeholder="Rp. 200XXX" id="jumlah" value="{{ $money->jumlah }}">
-                                <div class="input-group-prepend">
-                                    <label for="jumlah"><span class="btn btn-dark"><i class="fas  fa-money-bill-alt"></i></span></button></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="waktu">Date time</label>
-                        <div class="col-sm-8">
-                            <div class="input-group-append date">
-                            <input type="text" id="waktu" class="form-control custom" name="waktu" placeholder="Select Date Time" data-date-format="dd M yyyy, HH:ii p" autocomplete="off" value="{{ \Carbon\Carbon::parse($money->waktu)->format('d M Y, H:i') }}" readonly required>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-secondary"><span class="add-on"><i class="fas fa-backspace icon-remove"></i></span></button>
-                                    <button type="button" class="btn btn-secondary"><span class="add-on"><i class="fas fa-calendar-alt icon-th"></i></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="minimal 4 karakter">{{ $money->keterangan }}</textarea>
-                        </div>
-                    </div>
-                        <button type="submit" class="btn btn-danger btn-md rounded-pill mt-1 mb-3">Simpan</button>
-                    </form>
+<div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('material-kit/assets/img/bg2.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="brand">
+                    
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="card card-nav-tabs">
+    <div class="card-header card-header-primary">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ Route('home.finance') }}"><i class="material-icons">table_chart</i> Tables</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ Route('create.finance') }}"><i class="material-icons">alarm_add</i> Buat Record</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+    <a href="{{ Route('home.finance') }}" class="btn btn-primary btn-fab btn-fab-mini btn-round"><span class="material-icons">keyboard_arrow_left</span></a>
+    <h4 class="card-title">Forms<h4>
+        <p class="card-text mb-4">Write and save your finances here,</p>
+        @include ('alerts.alert')
+            <div class="col-lg-12">
+                <div class="container">
+                    <form action="{{ Route('update.finance', $money->id) }}" method="POST">
+                        {{ csrf_field() }} 
+                        {{ method_field('PUT') }}
+                        <div class="form-group">
+                            <label for="operator">Finance</label>
+                                <select class="form-control" name="operator" id="operator" required autofocus>
+                                    <option value="" selected disabled>Pilih Finance</option>
+                                    <option value="pemasukkan" {{ $money->operator == '+' ? 'selected' : '' }}>Pemasukkan</option>
+                                    <option value="pengeluaran" {{ $money->operator == '-' ? 'selected' : '' }}>Pengeluaran</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah">Money</label>
+                                <input type="number" class="form-control" id="jumlah" name="jumlah" aria-describedby="emailHelp" value="{{ $money->jumlah }}" required>
+                                <small id="emailHelp" class="form-text text-muted">Enter the amount of your money here</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control" for="waktu">Datetime</label>
+                                <div class="input-group date">
+                                    <input type="text" class="form-control date" name="waktu" id="waktu" value="{{ \Carbon\Carbon::parse($money->waktu)->format('d M Y, H:i') }}" required>
+                                    <!-- data-date-format="dd M yyyy H:i p" -->
+                                </div>
+                                <small id="emailHelp" class="form-text text-muted">Select Date time</small>
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Keterangan</label>
+                                <textarea class="form-control" name="keterangan" id="keterangan">{{ $money->keterangan }}</textarea>
+                                <small id="emailHelp" class="form-text text-muted">minimal 4 karakter</small>
+                            </div>
+                                <button type="submit" class="btn btn-danger btn-round mt-2 mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 @endsection
+
 @section('script')
-     <script type="text/javascript">
+<script type="text/javascript">
+
+    // $('#waktu').datetimepicker({
+    //     showTodayButton: true,
+    //     toolbarPlacement: 'bottom',
+    //     showClose: true,
+    // });
+
+    $(function () {
         $('.date').datetimepicker({
-            weekStart: 1,
-            todayBtn:  true,
-            autoclose: true,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: true,
-            pickerPosition: 'top-left',
-            keyboardNavigation: true,
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: "fa fa-chevron-left",
+                next: "fa fa-chevron-right",
+                today: "fa fa-screenshot",
+                clear: "fa fa-trash",
+                close: "fa fa-remove",
+            }
         });
-    </script>
+    });
+</script>
 @endsection

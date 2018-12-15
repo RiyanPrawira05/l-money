@@ -18,11 +18,11 @@ Route::get('/', function(){
 Route::resource('lara-money', 'MoneyController', [
 	'names' => [
 				'index' => 'home.finance',
-				'create' => 'finance.create',
-				'store' => 'finance.added',
-				'edit' => 'finance.edit',
-				'update' => 'finance.update',
+				'create' => 'create.finance',
+				'store' => 'added.finance',
+				'edit' => 'edit.finance',
+				'update' => 'update.finance',
 				] 
 			]);
 
-Route::post('/delete', 'MoneyController@delete')->name('finance.delete');
+Route::post('/delete', 'MoneyController@delete')->name('delete.finance');

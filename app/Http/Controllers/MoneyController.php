@@ -21,15 +21,16 @@ class MoneyController extends Controller
             $money = $result->whereDate('waktu', '=', $search);
         }
         $money = $result->orderBy('waktu', 'DESC')->paginate(5);
-        $data = $result->whereMonth('created_at', '=', '12')->get();
-        $total = 0;
-        foreach ($data as $key => $value) {
-            if ($value->operator == '+') {
-                $total += $value->jumlah;
-            } else {
-                $total -= $value->jumlah;
+
+            $laporan = $result->whereMonth('created_at', '=', '12')->get();
+            $total = 0;
+            foreach ($laporan as $key => $value) {
+                if ($value->operator == '+') {
+                    $total += $value->jumlah;
+                } else {
+                    $total -= $value->jumlah;
+                }
             }
-        }
         return view('laraMoney.index', compact('money', 'total'));
     }
 

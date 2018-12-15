@@ -1,31 +1,31 @@
 @extends ('laraMoney.appMoney')
 @section ('content')
-<header class="masthead text-center text-white">
-    <div class="masthead-content">
-        <div class="container">
-            <h1 class="masthead-heading mb-0">Welcome !!</h1>
-            <h2 class="masthead-subheading mb-0">Manage your finance now</h2>
-            <a href="{{ Route('home.finance') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Get started</a>
-        </div>
-    </div>
-        <div class="bg-circle-1 bg-circle"></div>
-        <div class="bg-circle-2 bg-circle"></div>
-        <div class="bg-circle-3 bg-circle"></div>
-        <div class="bg-circle-4 bg-circle"></div>
-    </header>
+<div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('material-kit/assets/img/bg2.jpg');">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 order-lg-2">
-                <div class="p-5">
-                    <img class="img-fluid rounded-circle" src="{{ asset('creative-agency/img/01.jpg') }}" alt="lara-money">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="brand">
+                    <h1>Hello There.</h1>
+                    <h3>Welcome to LARA MONEY</h3>
                 </div>
             </div>
-        <div class="col-lg-6 order-lg-1">
-            <div class="p-5">
-                <h2 class="display-4">Hello.. There,</h2>
-                <p>We can manage our finances so that expenses and revenues can be recorded in a structured and safe manner</p>
-                <p class="mt-3 mb-0 card-text text-danger">See your table finance here</p>
-                <a href="{{ Route('home.finance') }}" class="btn btn-secondary btn-md rounded-pill mt-2">Go now !!</a>
+        </div>
+    </div>
+</div>
+<div class="main main-raised">
+    <div class="container">
+        <div class="section text-center">
+            <div class="row">
+                <div class="col-md-9 ml-auto mr-auto">
+                    <div class="avatar">
+                        <img src="{{ asset('img/01.jpg') }}" alt="laraMoney" class="img-raised rounded-circle img-fluid" height="200" width="200">
+                    </div>
+                        <h2 class="title">Let&apos;s talk about finance</h2>
+                            <h5 class="description">sometimes we find it difficult to manage our finances on a daily basis, because records are easily damaged or easily damaged. This is certainly very detrimental because we never know our financial flow in expenditure or income, so we cannot manage money or manage money in every expenditure or income. With this application it can make it easier for someone to record or record our finances. Very easy to use and data is not easily damaged or lost anymore, we can manage our finances regularly and be safe in spending something or when entering our salary.</h5>
+                        <footer class="blockquote-footer">By <cite title="Source Title">Riyan&apos;s</cite></footer>
+                        <a href="{{ Route('home.finance') }}" class="btn btn-primary">Go and try</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
