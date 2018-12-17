@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jumlah">Money</label>
-                                <input type="number" class="form-control" id="jumlah" name="jumlah" aria-describedby="emailHelp" required>
+                                <input type="text" class="form-control" id="jumlah" name="jumlah" aria-describedby="emailHelp" data-prefix="Rp " data-thousands="." data-decimal="," required>
                                 <small id="emailHelp" class="form-text text-muted">Enter the amount of your money here</small>
                             </div>
                             <div class="form-group">
@@ -67,12 +67,6 @@
 @section('script')
 <script type="text/javascript">
 
-    // $('#waktu').datetimepicker({
-    //     showTodayButton: true,
-    //     toolbarPlacement: 'bottom',
-    //     showClose: true,
-    // });
-
     $(function () {
         $('.date').datetimepicker({
             icons: {
@@ -85,8 +79,16 @@
                 today: "fa fa-screenshot",
                 clear: "fa fa-trash",
                 close: "fa fa-remove",
-            }
+            },
+
+        showTodayButton: true,
+        toolbarPlacement: 'bottom',
+        showClose: true,
+        format: 'dd M Y H:i p'
+
         });
     });
+
+    $('#jumlah').maskMoney({ precision: 0 });
 </script>
 @endsection

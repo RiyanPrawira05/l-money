@@ -20,9 +20,9 @@ class MoneyController extends Controller
             $search = Carbon::parse($request->search)->format('y-m-d');
             $money = $result->whereDate('waktu', '=', $search);
         }
-        $money = $result->orderBy('waktu', 'DESC')->paginate(5);
+        $money = Money::orderBy('waktu', 'DESC')->paginate(5);
 
-            $laporan = $result->whereMonth('created_at', '=', '12')->get();
+            $laporan = Money::whereMonth('created_at', '=', '12')->get();
             $total = 0;
             foreach ($laporan as $key => $value) {
                 if ($value->operator == '+') {
@@ -52,6 +52,7 @@ class MoneyController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all(), filter_var($request->jumlah, FILTER_SANITIZE_NUMBER_FLOAT));
         $this->validate($request, [
             'jumlah' => 'required',
             'operator' => 'required|string',
@@ -60,8 +61,9 @@ class MoneyController extends Controller
         ]);
         $detail = $request->operator == 'pemasukkan' ? '+' : '-';
         $time = $request->waktu ? Carbon::parse($request->waktu)->format('y-m-d h:i:s') : '';
+        $jumlah = filter_var($request->jumlah, FILTER_SANITIZE_NUMBER_FLOAT); 
         $money = Money::create([
-            'jumlah' => $request->jumlah,
+            'jumlah' => $jumlah,
             'keterangan' => $request->keterangan, 
             'operator' => $detail,
             'waktu' => $time,
@@ -109,8 +111,9 @@ class MoneyController extends Controller
         ]);
         $detail = $request->operator == 'pemasukkan' ? '+' : '-';
         $time = $request->waktu ? Carbon::parse($request->waktu)->format('y-m-d h:i:s') : '';
+        $jumlah = filter_var($request->jumlah, FILTER_SANITIZE_NUMBER_FLOAT);
         $money = Money::find($id)->Update([
-            'jumlah' => $request->jumlah,
+            'jumlah' => $jumlah,
             'keterangan' => $request->keterangan, 
             'operator' => $detail,
             'waktu' => $time,
@@ -139,5 +142,10 @@ class MoneyController extends Controller
             return redirect()->back()->with('error', 'Tidak ada data yang ingin dihapus, silahkan cek kembali');
         }
         return redirect()->back()->with('success', 'Data catatan finance sudah dihapus');
+    }
+
+    public function chart()
+    {
+        return view('laraMoney.chart');
     }
 }

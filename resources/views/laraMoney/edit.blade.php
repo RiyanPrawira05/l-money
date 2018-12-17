@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jumlah">Money</label>
-                                <input type="number" class="form-control" id="jumlah" name="jumlah" aria-describedby="emailHelp" value="{{ $money->jumlah }}" required>
+                                <input type="text" class="form-control" id="jumlah" name="jumlah" aria-describedby="emailHelp" data-prefix="Rp " data-thousands="." data-decimal="," value="{{ $money->jumlah }}" required>
                                 <small id="emailHelp" class="form-text text-muted">Enter the amount of your money here</small>
                             </div>
                             <div class="form-group">
@@ -91,5 +91,6 @@
             }
         });
     });
+    $('#jumlah').maskMoney({ precision: 0 });
 </script>
 @endsection

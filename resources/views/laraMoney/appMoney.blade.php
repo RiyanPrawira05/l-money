@@ -19,7 +19,6 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('material-kit/assets/demo/demo.css') }}" rel="stylesheet" />
-    @yield('css')
 </head>
 
 <body class="index-page sidebar-collapse">
@@ -36,14 +35,14 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ Route('home') }}"><i class="material-icons">dashboard</i> Home</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ Route('home') }}"><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="material-icons">apps</i> Finance</a>
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-university"></i> Finance</a>
                         <div class="dropdown-menu dropdown-with-icons">
-                            <a href="javascript:0" class="dropdown-item"><i class="material-icons">insert_chart</i> Chart</a>
-                            <a href="{{ Route('home.finance') }}" class="dropdown-item"><i class="material-icons">content_paste</i> Table</a>
+                            <a href="{{ Route('chart.finance') }}" class="dropdown-item"><i class="fa fa-th"></i>&nbsp; Chart</a>
+                            <a href="{{ Route('home.finance') }}" class="dropdown-item"><i class="fa fa-th-list"></i>&nbsp; Table</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -107,9 +106,14 @@
     <script src="{{ asset('material-kit/assets/js/core/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('material-kit/assets/js/core/bootstrap-material-design.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('material-kit/assets/js/plugins/moment.min.js') }}"></script>
+    <!-- Maskmoney -->
+    <script src="{{ asset('material-kit/maskmoney/dist/jquery.maskMoney.min.js') }}"></script>
     <script src="{{ asset('material-kit/assets/js/plugins/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
     <script src="{{ asset('material-kit/assets/js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('material-kit/assets/js/material-kit.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('material-kit/maskmoney/dist/jquery.maskMoney.js') }}"></script>
+    <script src="{{ asset('chart.js/dist/Chart.js') }}"></script>
+    <script src="{{ asset('chart.js/dist/Chart.min.js') }}"></script>
     @yield('script')
     <script>
     $(document).ready(function() {
