@@ -70,12 +70,6 @@
 @section('script')
 <script type="text/javascript">
 
-    // $('#waktu').datetimepicker({
-    //     showTodayButton: true,
-    //     toolbarPlacement: 'bottom',
-    //     showClose: true,
-    // });
-
     $(function () {
         $('.date').datetimepicker({
             icons: {
@@ -88,7 +82,12 @@
                 today: "fa fa-screenshot",
                 clear: "fa fa-trash",
                 close: "fa fa-remove",
-            }
+            },
+
+            showTodayButton: true,
+            toolbarPlacement: 'bottom',
+            showClose: true
+
         });
     });
     $('#jumlah').maskMoney({ precision: 0 });

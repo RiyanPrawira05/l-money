@@ -83,8 +83,7 @@
 
         showTodayButton: true,
         toolbarPlacement: 'bottom',
-        showClose: true,
-        format: 'dd M Y H:i p'
+        showClose: true
 
         });
     });

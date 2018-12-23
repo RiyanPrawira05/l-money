@@ -38,7 +38,6 @@
                     <thead>
                         <form action="{{ Route('delete.finance') }}" method="POST">{{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-just-icon btn-round mb-3" type="submit"><span class="fa fa-times-circle"></span></button>
-                        </form>
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">No</th>
@@ -52,29 +51,29 @@
                     </thead>
                     <tbody>
                     @if (count($money) > 0)
-                    @foreach ($money as $moneys)
+                    @foreach ($money as $moneys => $keyMoney)
                         <tr>
                             <td>
-                                <input type="checkbox" name="ceklis[]" id="ceklis" value="{{ $moneys->id }}">    
+                                <input type="checkbox" name="ceklis[]" id="ceklis" value="{{ $keyMoney->id }}">    
                             </td>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('d M Y') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($moneys->waktu)->format('h:i') }}</td>
-                            <td>{{ $moneys->operator == '+' ? 'Pemasukkan' : 'Pengeluaran' }}</td>
+                            <td>{{ \Carbon\Carbon::parse($keyMoney->waktu)->format('d M Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($keyMoney->waktu)->format('h:i') }}</td>
+                            <td>{{ $keyMoney->operator == '+' ? 'Pemasukkan' : 'Pengeluaran' }}</td>
 
-                            @if ($moneys->keterangan)
-                                <td>{{ $moneys->keterangan }}</td>
+                            @if ($keyMoney->keterangan)
+                                <td>{{ $keyMoney->keterangan }}</td>
                             @else
                                 <td><span class="m-0 text-muted">Tidak ada keterangan</span></td>
                             @endif
 
-                            @if ($moneys->operator == '+')
-                                <td><p class="text-success">{{ $moneys->operator }} {{ $moneys->jumlah }}</p></td>
+                            @if ($keyMoney->operator == '+')
+                                <td><p class="text-success">{{ $keyMoney->operator }} {{ $keyMoney->jumlah }}</p></td>
                             @else
-                                <td><p class="text-danger">{{ $moneys->operator }} {{ $moneys->jumlah }}</td>
+                                <td><p class="text-danger">{{ $keyMoney->operator }} {{ $keyMoney->jumlah }}</td>
                             @endif
                             <td>
-                                <a href="{{ Route('edit.finance', $moneys->id) }}" class="btn btn-primary btn-round"><i class="fa fa-paint-brush"></i> Edit</a>
+                                <a href="{{ Route('edit.finance', $keyMoney->id) }}" class="btn btn-primary btn-round"><i class="fa fa-paint-brush"></i> Edit</a>
                             </td>
                         </tr>
                         @endforeach
@@ -100,11 +99,12 @@
                             </div>
                         @endif
                         </tbody>
-                    </table>
-                </div> 
-                    {!! $money->links('pagination.custom') !!}
-            </div>
+                    </form>
+                </table>
+            </div> 
+                {!! $money->links('pagination.custom') !!}
         </div>
+    </div>
 @endsection
 @section ('script')
 <script type="text/javascript">

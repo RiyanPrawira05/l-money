@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Money;
 use Carbon\Carbon;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class MoneyController extends Controller
 {
@@ -90,7 +92,12 @@ class MoneyController extends Controller
      */
     public function edit($id)
     {
-        $money = Money::find($id);
+        $client = new Client;
+        // Create a request
+        $request = $client->get('http://127.0.0.1:8000/api/money/'.$id);
+        // Get the actual response without headers
+        $response = $request->getBody()->getContents();
+        $money = json_decode($response);
         return view('laraMoney.edit', compact('money'));
     }
 
@@ -141,11 +148,29 @@ class MoneyController extends Controller
         } else {
             return redirect()->back()->with('error', 'Tidak ada data yang ingin dihapus, silahkan cek kembali');
         }
-        return redirect()->back()->with('success', 'Data catatan finance sudah dihapus');
+        dd($ceklis, $money);
+        return redirect()->back()->with('success', 'Data catatan finance telah dihapus');
     }
 
     public function chart()
     {
-        return view('laraMoney.chart');
+        $tahun = Carbon::now()->format('Y');
+        $money = Money::whereYear('waktu', '=', $tahun)->orderBy('waktu', 'ASC')->get()->groupBy(function ($q) {
+                return Carbon::parse($q->waktu)->format('M');
+        });
+        // dd($money);
+        $total = [];
+        foreach ($money as $key => $value) {
+            foreach ($value as $keyMonth => $valueMonth) {
+                $total[$key] = 0;
+                if ($valueMonth->operator == '+') {
+                $total[$key] += $valueMonth->jumlah;
+            } else {
+                $total[$key] -= $valueMonth->jumlah;
+                }
+            }
+        }
+        // dd($money, $total);
+        return view('laraMoney.chart', compact('money', 'total'));
     }
 }
